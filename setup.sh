@@ -30,37 +30,19 @@ sudo apt upgrade -y
 
 
 echo -e "\e[93mInstalling CLI packages\e[0m"
-sudo apt install -y ncdu htop iputils-ping iputils-tracepath openssh-server byobu apt-transport-https ca-certificates curl gnupg lsb-release ffmpeg git perl whiptail lm-sensors
+sudo apt install -y ncdu htop iputils-ping iputils-tracepath openssh-server byobu apt-transport-https ca-certificates curl gnupg lsb-release ffmpeg git perl whiptail lm-sensors bash dbus
 
 
 
 echo -e "\e[93mInstalling GUI packages\e[0m"
 sudo apt install -y baobab putty terminator filezilla fonts-noto-cjk* fonts-noto-mono fonts-noto-color-emoji gparted blueman fcitx-hangul
-echo -e "\e[92mMANUAL SETTINGS REQUIRED:\e[0m"
-echo -e "(terminator) profile settings. (putty) connection profiles."
 
 
 
-echo -e "\e[93mInstalling GNOME extensions requisities\e[0m"
-sudo apt install -y chrome-gnome-shell gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
-echo -e "\e[92mMANUAL SETTINGS REQUIRED:\e[0m"
-echo "install firefox extension bridge."
-firefox -new-tab -url https://extensions.gnome.org/local/
-echo -e "\e[92mMANUAL SETTINGS REQUIRED:\e[0m"
-echo "install extensions."
-firefox -new-tab -url https://extensions.gnome.org/extension/15/alternatetab/ \
- -new-tab -url https://extensions.gnome.org/extension/615/appindicator-support/ \
- -new-tab -url https://extensions.gnome.org/extension/1071/applications-overview-tooltip/ \
- -new-tab -url https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/ \
- -new-tab -url https://extensions.gnome.org/extension/841/freon/ \
- -new-tab -url https://extensions.gnome.org/extension/104/netspeed/ \
- -new-tab -url https://extensions.gnome.org/extension/7/removable-drive-menu/ \
- -new-tab -url https://extensions.gnome.org/extension/2741/remove-alttab-delay-v2/ \
- -new-tab -url https://extensions.gnome.org/extension/906/sound-output-device-chooser/ \
- -new-tab -url https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/ \
- -new-tab -url https://extensions.gnome.org/extension/1031/topicons/ \
- -new-tab -url https://extensions.gnome.org/extension/1007/window-is-ready-notification-remover/ \
- &
+echo -e "\e[93mSetup language/input\e[0m"
+sudo apt install $(check-language-support)
+gnome-language-selector
+
 
 
 echo -e "\e[93mInstalling grub-customizer\e[0m"
@@ -68,6 +50,28 @@ sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y
 sudo apt update
 sudo apt install -y grub-customizer
 sudo grub-customizer &
+
+
+
+echo -e "\e[93mInstalling GNOME extensions requisities\e[0m"
+sudo apt install -y chrome-gnome-shell gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
+git clone https://github.com/brunelli/gnome-shell-extension-installer
+sudo chmod +x gnome-shell-extension-installer/gnome-shell-extension-installer
+sudo mv gnome-shell-extension-installer/gnome-shell-extension-installer /usr/bin/
+rm -rf  gnome-shell-extension-installer
+gnome-shell-extension-installer 15
+gnome-shell-extension-installer 615
+gnome-shell-extension-installer 1071
+gnome-shell-extension-installer 1401
+gnome-shell-extension-installer 841
+gnome-shell-extension-installer 104
+gnome-shell-extension-installer 7
+gnome-shell-extension-installer 2741
+gnome-shell-extension-installer 906
+gnome-shell-extension-installer 355
+gnome-shell-extension-installer 1031
+gnome-shell-extension-installer 1007 --restart-shell
+cd ..
 
 
 
@@ -102,7 +106,7 @@ echo "fonts selection. theme selection."
 
 
 echo -e "\e[93mInstalling media packages\e[0m"
-sudo apt install -y vlc gimp inkscape
+sudo apt install -y vlc inkscape
 
 
 
@@ -124,12 +128,13 @@ if [ -f ~/.bashrc ]; then
 	mv ~/.bashrc ~/.bashrc.bak
 fi
 wget https://ros.kasimov.synology.me/.bashrc -O ~/.bashrc
-source ~/.bashrc
+source /opt/ros/$ROS_VER/setup.bash
 mkdir -p $ROS_WS/src
 cd $ROS_WS/src
 catkin_init_workspace
 cd $ROS_WS
 catkin_make
+source $ROS_WS/devel/setup.bash
 
 
 
@@ -140,7 +145,8 @@ sudo tar -xvf $ARDUINO_VER-linux64.tar.xz -C /opt/
 rm $ARDUINO_VER-linux64.tar.xz
 sudo /opt/$ARDUINO_VER/install.sh
 /opt/$ARDUINO_VER/arduino-linux-setup.sh $USER
-rm ~/Desktop/arduino*.desktop
+rm ~/Desktop/arduino-arduinoide.desktop
+sudo apt autoremove -y
 
 
 
@@ -148,8 +154,7 @@ echo -e "\e[93mInstalling Virtualbox 6.1 repository\e[0m"
 echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
 wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
 sudo apt update
-# sudo apt install -y virtualbox-6.1
-#TODO: Resolve error 'Error! Your kernel headers for kernel 5.3.0-1044-gke cannot be found. Please install the linux-headers-5.3.0-1044-gke ...'
+sudo apt install -y virtualbox-6.1
 
 
 

@@ -61,7 +61,7 @@ sudo mv gnome-shell-extension-installer/gnome-shell-extension-installer /usr/bin
 rm -rf  gnome-shell-extension-installer
 gnome-shell-extension-installer 15
 gnome-shell-extension-installer 615
-gnome-shell-extension-installer 1071
+gnome-shell-extension-installer 1071 3.20
 gnome-shell-extension-installer 1401
 gnome-shell-extension-installer 841
 gnome-shell-extension-installer 104

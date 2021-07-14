@@ -30,7 +30,7 @@ sudo apt upgrade -y
 
 
 echo -e "\e[93mInstalling CLI packages\e[0m"
-sudo apt install -y ncdu htop iputils-ping iputils-tracepath openssh-server byobu apt-transport-https ca-certificates curl gnupg lsb-release ffmpeg git perl whiptail
+sudo apt install -y ncdu htop iputils-ping iputils-tracepath openssh-server byobu apt-transport-https ca-certificates curl gnupg lsb-release ffmpeg git perl whiptail lm_sensors
 
 
 
@@ -138,6 +138,7 @@ sudo tar -xvf $ARDUINO_VER-linux64.tar.xz -C /opt/
 rm $ARDUINO_VER-linux64.tar.xz
 sudo /opt/$ARDUINO_VER/install.sh
 /opt/$ARDUINO_VER/arduino-linux-setup.sh $USER
+rm $HOME/Desktop/arduino*.desktop
 
 
 

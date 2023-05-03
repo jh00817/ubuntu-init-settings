@@ -10,9 +10,9 @@ echo "[Note] Target OS version  >>> Ubuntu 20.04.x (Focal Fossa) or Linux Mint 2
 echo "[Note] Target ROS version >>> ROS Noetic Ninjemys"
 echo "[Note] Catkin workspace   >>> $HOME/catkin_ws"
 echo ""
-echo "PRESS [ENTER] TO CONTINUE THE INSTALLATION"
-echo "IF YOU WANT TO CANCEL, PRESS [CTRL] + [C]"
-read
+# echo "PRESS [ENTER] TO CONTINUE THE INSTALLATION"
+# echo "IF YOU WANT TO CANCEL, PRESS [CTRL] + [C]"
+# read
 
 
 # mirror를 kakao로 변경 & 필요 없는 패키지 정리 & 업그레이드

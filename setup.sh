@@ -130,7 +130,7 @@ echo -e "\n\e[93mRestoring .bashrc with ROS configurations\e[0m"
 if [ -f ~/.bashrc ]; then
 	mv ~/.bashrc ~/.bashrc.bak
 fi
-wget https://ros.kasimov.synology.me/.bashrc -O ~/.bashrc
+wget https://raw.githubusercontent.com/jh00817/ubuntu-init-settings/main/.bashrc -O ~/.bashrc   # .bashrc 파일 링크인데, 이거 바꿔주세요 !  
 source /opt/ros/$ROS_VER/setup.bash
 mkdir -p $ROS_WS/src
 cd $ROS_WS/src

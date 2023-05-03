@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# writter email : dreambait011@naver.com
+# 안녕하세요, echo는 터미널에 문자를 출력하는 명령어 입니다. 주석 대신 echo 안에 쓰여진 내용들을 읽으시면 이해하기 쉬울 겁니다 !
+
 SCRIPT_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 cd $SCRIPT_LOCATION
 
@@ -110,7 +113,7 @@ sudo apt install -y -qq vlc inkscape
 
 
 
-ROS_VER=melodic
+ROS_VER=noetic   ### 중요
 ROS_WS=$HOME/catkin_ws
 echo -e "\n\e[93mInstalling ROS version=$ROS_VER, workspace=$ROS_WS\e[0m"
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'

@@ -32,11 +32,6 @@ sudo sed -i -E 's/.?.?.?archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.
 sudo apt update -qq
 sudo apt upgrade -y -qq
 
-# 한글 설치
-echo -e "\n\e[93mSetup language/input\e[0m"
-sudo apt install -y -qq $(check-language-support)
-gnome-language-selector
-
 # VSCode 설치
 echo -e "\n\e[93mInstalling VSCode\e[0m"
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg

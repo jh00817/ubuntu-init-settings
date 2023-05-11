@@ -12,5 +12,3 @@ Ubuntu initial setup &amp; customizing in ONE SHOT!
 
 'setup.sh' and 'reference' is the part I refered to
 
-
-안녕하세요 !

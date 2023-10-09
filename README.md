@@ -2,7 +2,9 @@
 Ubuntu initial setup &amp; customizing in ONE SHOT!
 
 Open the terminal and paste it
-```wget && chmod +x install_noetic.sh && ./install_noetic.sh
+```
+wget  && chmod +x install_noetic.sh && ./install_noetic.sh
+```
 
 or
 

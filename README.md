@@ -3,7 +3,7 @@ Ubuntu initial setup &amp; customizing in ONE SHOT!
 
 Open the terminal and paste it
 ```
-wget github.com/jh00817/ubuntu-init-settings/install_humble.sh && chmod +x install_humble.sh && ./install_humble.sh
+wget https://raw.githubusercontent.com/jh00817/ubuntu-init-settings/main/install_humble.sh && chmod +x install_humble.sh && ./install_humble.sh
 ```
 
 or

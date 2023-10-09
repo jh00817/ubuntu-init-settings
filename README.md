@@ -3,7 +3,7 @@ Ubuntu initial setup &amp; customizing in ONE SHOT!
 
 Open the terminal and paste it
 ```
-wget  && chmod +x install_noetic.sh && ./install_noetic.sh
+wget github.com/jh00817/ubuntu-init-settings/install_humble.sh && chmod +x install_noetic.sh && ./install_noetic.sh
 ```
 
 or

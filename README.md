@@ -15,6 +15,12 @@ Choice the version you want to install. if you want to install `noetic`, replace
 3. `./setup.sh`
 4. Wait until script finishes running!
 
+## Caution
+
+When you run this file, first you need to type password and give some okay sign.
+And while in installation, when the language selector is opened, you need to close the language selector.
+After you close it, install would be continued.
+
 ## File description
 
 'setup.sh' is full install package for beginner of ubuntu

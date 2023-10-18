@@ -20,6 +20,7 @@ Choice the version you want to install. if you want to install `noetic`, replace
 When you run this file, first you need to type password and give some okay sign.
 And while in installation, when the language selector is opened, you need to close the language selector.
 After you close it, install would be continued.
+Like above, you should stay with computer for quick install
 
 
 ## File description

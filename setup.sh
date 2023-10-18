@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# writter email : dreambait011@naver.com
-# 안녕하세요, echo는 터미널에 문자를 출력하는 명령어 입니다. 주석 대신 echo 안에 쓰여진 내용들을 읽으시면 이해하기 쉬울 겁니다 !
-
 SCRIPT_LOCATION="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 cd $SCRIPT_LOCATION
 
@@ -113,8 +110,8 @@ sudo apt install -y -qq vlc inkscape
 
 
 
-ROS_VER=noetic   ### 중요
-ROS_WS=$HOME/catkin_ws
+ROS_VER=humble
+ROS_WS=$HOME/ros2_ws
 echo -e "\n\e[93mInstalling ROS version=$ROS_VER, workspace=$ROS_WS\e[0m"
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
@@ -127,18 +124,8 @@ rosdep update
 
 
 echo -e "\n\e[93mRestoring .bashrc with ROS configurations\e[0m"
-if [ -f ~/.bashrc ]; then
-	mv ~/.bashrc ~/.bashrc.bak
-fi
-wget https://raw.githubusercontent.com/jh00817/ubuntu-init-settings/main/.bashrc -O ~/.bashrc   # .bashrc 파일 링크인데, 이거 바꿔주세요 !  
-source /opt/ros/$ROS_VER/setup.bash
-mkdir -p $ROS_WS/src
-cd $ROS_WS/src
-catkin_init_workspace
-cd $ROS_WS
-catkin_make
-source $ROS_WS/devel/setup.bash
 
+echo -e "\n\e[93m YOU NEED COLCON_MAKE for your self. Editing the .bashrc part \e[0m"
 
 
 ARDUINO_VER=arduino-1.8.15

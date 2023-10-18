@@ -1,4 +1,4 @@
-# ubuntu-init-settings
+# Ubuntu-init-settings
 Ubuntu initial setup &amp; customizing in ONE SHOT!
 
 Open the terminal and paste it

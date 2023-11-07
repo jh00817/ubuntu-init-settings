@@ -14,12 +14,6 @@ echo 'APT::Periodic::Update-Package-Lists "0";' | sudo tee /etc/apt/apt.conf.d/2
 echo 'APT::Periodic::Unattended-Upgrade "0";' | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades
 sudo dpkg-reconfigure unattended-upgrades
 
-echo -e "\n\e[93mRemove APT lock and block autoupdate\e[0m"
-sudo rm -rf /var/lib/dpkg/lock* /var/cache/apt/archives/lock*
-echo 'APT::Periodic::Update-Package-Lists "0";' | sudo tee /etc/apt/apt.conf.d/20auto-upgrades
-echo 'APT::Periodic::Unattended-Upgrade "0";' | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades
-sudo dpkg-reconfigure unattended-upgrades
-
 
 
 echo -e "\n\e[93mPurge useless packages\e[0m"

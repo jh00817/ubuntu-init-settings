@@ -6,7 +6,13 @@ cd $SCRIPT_LOCATION
 echo -e "\e[103m\e[30m  [ UBUNTU INIT SETTINGS HELPER ]  \e[0m"
 mkdir -p ~/applications
 
+# mirror를 kakao로 변경 & 필요 없는 패키지 정리 & 업그레이드
 
+echo -e "\n\e[93mRemove APT lock and block autoupdate\e[0m"
+sudo rm -rf /var/lib/dpkg/lock* /var/cache/apt/archives/lock*
+echo 'APT::Periodic::Update-Package-Lists "0";' | sudo tee /etc/apt/apt.conf.d/20auto-upgrades
+echo 'APT::Periodic::Unattended-Upgrade "0";' | sudo tee -a /etc/apt/apt.conf.d/20auto-upgrades
+sudo dpkg-reconfigure unattended-upgrades
 
 echo -e "\n\e[93mRemove APT lock and block autoupdate\e[0m"
 sudo rm -rf /var/lib/dpkg/lock* /var/cache/apt/archives/lock*

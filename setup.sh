@@ -21,6 +21,15 @@ sudo apt purge -y -qq thunderbird aisleriot gnome-mahjongg gnome-mines gnome-sud
 sudo apt autoremove -y -qq
 
 
+
+echo -e "\n\e[93mAPT repository update\e[0m"
+sudo sed -i -E 's/.?.?.?archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
+sudo apt update -qq
+sudo apt upgrade -y -qq
+
+
+
+
 echo -e "\n\e[93mInstalling CLI packages\e[0m"
 sudo apt install -y -qq ncdu htop iputils-ping iputils-tracepath openssh-server byobu apt-transport-https ca-certificates curl gnupg lsb-release ffmpeg git perl whiptail lm-sensors bash dbus
 

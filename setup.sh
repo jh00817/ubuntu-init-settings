@@ -21,14 +21,6 @@ sudo apt purge -y -qq thunderbird aisleriot gnome-mahjongg gnome-mines gnome-sud
 sudo apt autoremove -y -qq
 
 
-
-echo -e "\n\e[93mAPT repository update\e[0m"
-sudo sed -i -E 's/.?.?.?archive.ubuntu.com/mirror.kakao.com/g' /etc/apt/sources.list
-sudo apt update -qq
-sudo apt upgrade -y -qq
-
-
-
 echo -e "\n\e[93mInstalling CLI packages\e[0m"
 sudo apt install -y -qq ncdu htop iputils-ping iputils-tracepath openssh-server byobu apt-transport-https ca-certificates curl gnupg lsb-release ffmpeg git perl whiptail lm-sensors bash dbus
 
@@ -53,28 +45,6 @@ sudo grub-customizer &
 
 
 
-echo -e "\n\e[93mInstalling GNOME extensions requisities\e[0m"
-sudo apt install -y -qq chrome-gnome-shell gir1.2-gtop-2.0 gir1.2-nm-1.0 gir1.2-clutter-1.0
-git clone https://github.com/brunelli/gnome-shell-extension-installer
-sudo chmod +x gnome-shell-extension-installer/gnome-shell-extension-installer
-sudo mv gnome-shell-extension-installer/gnome-shell-extension-installer /usr/bin/
-rm -rf  gnome-shell-extension-installer
-gnome-shell-extension-installer 15
-gnome-shell-extension-installer 615
-gnome-shell-extension-installer 1071 3.20
-gnome-shell-extension-installer 1401
-gnome-shell-extension-installer 841
-gnome-shell-extension-installer 104
-gnome-shell-extension-installer 7
-gnome-shell-extension-installer 2741
-gnome-shell-extension-installer 906
-gnome-shell-extension-installer 355
-gnome-shell-extension-installer 1031
-gnome-shell-extension-installer 1007 --restart-shell
-cd ..
-
-
-
 echo -e "\n\e[93mInstalling VSCode\e[0m"
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
@@ -90,18 +60,6 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 sudo apt update
 sudo apt install -y -qq google-chrome-stable
-
-
-
-echo -e "\n\e[93mInstalling GNOME customizations\e[0m"
-sudo add-apt-repository ppa:papirus/papirus -y
-sudo apt update -qq
-sudo apt install -y -qq gnome-tweaks papirus-icon-theme papirus-folders
-papirus-folders -C orange --theme Papirus-Dark
-#TODO: GNOME  gdm3.css lockscreen color tweak
-#perl -0e 's/#lockDialogGroup \{\n  background: #2c001e url\(resource:\/\/\/org\/gnome\/shell\/theme\/noise\-texture\.png\);\n  background\-repeat: repeat; \}/#lockDialogGroup \{\n  background: black; \}/' ubuntu.css
-echo -e "\e[92mMANUAL SETTINGS REQUIRED:\e[0m"
-echo "fonts selection. theme selection."
 
 
 
@@ -137,14 +95,6 @@ sudo /opt/$ARDUINO_VER/install.sh
 /opt/$ARDUINO_VER/arduino-linux-setup.sh $USER
 rm ~/Desktop/arduino-arduinoide.desktop
 sudo apt autoremove -y -qq
-
-
-
-echo -e "\n\e[93mInstalling Virtualbox 6.1 repository\e[0m"
-echo "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -sc) contrib" | sudo tee /etc/apt/sources.list.d/virtualbox.list
-wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
-sudo apt update -qq
-sudo apt install -y -qq virtualbox-6.1
 
 
 
